@@ -105,7 +105,7 @@ class _HomescreenState extends State<Homescreen> {
               builder: (context, state) {
                 if (state is Successfetch) {
                   return Expanded(
-                    child: ListView.builder(
+                    child: ListView.separated(
                       itemCount: 5,
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
@@ -124,6 +124,10 @@ class _HomescreenState extends State<Homescreen> {
                               description: state.fetchdata.media[index].body,
                             ));
                       },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(
+                        thickness: 0.4,
+                      ),
                     ),
                   );
                 } else if (state is Loadingfetch) {

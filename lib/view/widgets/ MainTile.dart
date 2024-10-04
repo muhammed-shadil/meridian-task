@@ -25,6 +25,8 @@ class Maintile extends StatelessWidget {
                   children: [
                     Text(
                       description,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                           fontSize: 14,
                           color: Colors.black,

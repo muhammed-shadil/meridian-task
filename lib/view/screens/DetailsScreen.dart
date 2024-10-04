@@ -8,25 +8,26 @@ class Detailsscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(15),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
             Text(
               body,
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             )
           ],
         ),
