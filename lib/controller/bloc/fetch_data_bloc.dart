@@ -24,18 +24,16 @@ class FetchDataBloc extends Bloc<FetchDataEvent, FetchDataState> {
     try {
       final Response response = await apirepository.homescreenRepository();
 
-      print(response.statusCode);
       if (response.statusCode == 200) {
         final result = jsonDecode(response.body);
-        // print(result);
+
         fetchdatas = MediaList.fromJson(result);
-        print(fetchdatas);
+
         emit(Successfetch(fetchdata: fetchdatas));
       } else {
         emit(Failurefetch("somthing went wrong"));
       }
     } catch (e) {
-      print(e.toString());
       emit(Failurefetch(e.toString()));
     }
   }
