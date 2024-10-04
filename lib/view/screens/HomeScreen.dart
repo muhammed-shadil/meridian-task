@@ -38,6 +38,10 @@ class _HomescreenState extends State<Homescreen> {
     super.initState();
   }
 
+  Future refresh() async {
+    BlocProvider.of<FetchDataBloc>(context).add(Fetchlist());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,33 +109,36 @@ class _HomescreenState extends State<Homescreen> {
               builder: (context, state) {
                 if (state is Successfetch) {
                   return Expanded(
-                    child: ListView.separated(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => Detailsscreen(
-                                            title: state
-                                                .fetchdata.media[index].title,
-                                            body: state
-                                                .fetchdata.media[index].body,
-                                          )));
-                            },
-                            child: Maintile(
-                              description: state.fetchdata.media[index].body,
-                            ));
-                      },
-                      separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(
-                        thickness: 0.4,
+                    child: RefreshIndicator(
+                      onRefresh: refresh,
+                      child: ListView.separated(
+                        itemCount: 5,
+                        itemBuilder: (BuildContext context, int index) {
+                          return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => Detailsscreen(
+                                              title: state
+                                                  .fetchdata.media[index].title,
+                                              body: state
+                                                  .fetchdata.media[index].body,
+                                            )));
+                              },
+                              child: Maintile(
+                                description: state.fetchdata.media[index].body,
+                              ));
+                        },
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const Divider(
+                          thickness: 0.4,
+                        ),
                       ),
                     ),
                   );
                 } else if (state is Loadingfetch) {
-                  return const CircularProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 } else if (state is Failurefetch) {
                   // ScaffoldMessenger.of(context).showSnackBar(
                   //   SnackBar(

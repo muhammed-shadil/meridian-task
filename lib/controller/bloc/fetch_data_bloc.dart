@@ -18,7 +18,6 @@ class FetchDataBloc extends Bloc<FetchDataEvent, FetchDataState> {
 
   FutureOr<void> fetchlists(
       Fetchlist event, Emitter<FetchDataState> emit) async {
-    print("asdfghjkl");
     emit(Loadingfetch());
     late MediaList fetchdatas;
     try {
