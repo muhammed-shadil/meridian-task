@@ -25,7 +25,7 @@ class Detailsscreen extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
+            Text(textAlign: TextAlign.justify,
               body,
               style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
             )

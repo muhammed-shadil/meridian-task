@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meridian_mechine_test/controller/bloc/fetch_data_bloc.dart';
+import 'package:meridian_mechine_test/view/screens/shimmer.dart';
 import 'package:meridian_mechine_test/view/widgets/%20MainTile.dart';
 import 'package:meridian_mechine_test/view/screens/DetailsScreen.dart';
 
@@ -46,10 +47,13 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: const [
-          Icon(
-            Icons.notifications_none,
-            size: 30,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.notifications_none,
+              size: 30,
+            ),
           )
         ],
         leading: Padding(
@@ -138,7 +142,8 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   );
                 } else if (state is Loadingfetch) {
-                  return const Center(child: CircularProgressIndicator());
+                  // return const Center(child: CircularProgressIndicator());
+                  return ShimmerLoading();
                 } else if (state is Failurefetch) {
                   // ScaffoldMessenger.of(context).showSnackBar(
                   //   SnackBar(

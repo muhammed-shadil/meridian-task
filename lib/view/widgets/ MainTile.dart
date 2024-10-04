@@ -16,7 +16,7 @@ class Maintile extends StatelessWidget {
             children: [
               const CircleAvatar(
                 backgroundImage: AssetImage(
-                    'assets/Ellipse 2 (1).png'), // Add your asset image here
+                    'assets/Ellipse 2 (1).png'), 
                 radius: 20,
               ),
               const SizedBox(width: 10),
